@@ -3,25 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة المتصدرين</title>
+    <title>لوحة المتصدرين - الطلاب والطالبات</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🏆 لوحة المتصدرين 🏆</h1>
-            <p class="subtitle">أفضل الطلاب والطالبات المتميزين</p>
-        </header>
-
-        <div class="file-upload">
-            <label for="csvFile" class="upload-btn">
-                📁 اختر ملف students.csv
-            </label>
-            <input type="file" id="csvFile" accept=".csv" />
-            <span id="fileName"></span>
+        <!-- Loading Screen -->
+        <div id="loading" class="loading-screen">
+            <div class="spinner"></div>
+            <p>جاري تحميل البيانات...</p>
         </div>
 
-        <div id="leaderboard" class="leaderboard"></div>
+        <!-- Error Screen -->
+        <div id="error" class="error-screen" style="display: none;">
+            <p class="error-message">حدث خطأ في تحميل البيانات</p>
+            <p class="error-detail">تأكد من وجود ملف students.csv في نفس المجلد</p>
+        </div>
+
+        <!-- Main Content -->
+        <div id="content" style="display: none;">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-icons">
+                    <svg class="trophy-icon bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                    </svg>
+                    <h1>لوحة المتصدرين</h1>
+                    <svg class="trophy-icon bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                    </svg>
+                </div>
+                <p class="subtitle">تهانينا للطلاب والطالبات المتميزين! 🌟</p>
+            </div>
+
+            <!-- Top 3 -->
+            <div id="top3" class="top-three"></div>
+
+            <!-- Ranks 4-10 -->
+            <div id="ranks4-10" class="ranks-section"></div>
+
+            <!-- Rest -->
+            <div id="rest" class="rest-section"></div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
