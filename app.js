@@ -60,7 +60,7 @@ function displayStudents(students) {
     const ranks4to10 = students.slice(3, 10);
     if (ranks4to10.length > 0) {
         const ranksContainer = document.getElementById('ranks4-10');
-        ranksContainer.innerHTML = '<h2>المراكز من 4 إلى 10</h2>';
+        ranksContainer.innerHTML = '<h2>Top 10</h2>';
         ranks4to10.forEach((student, index) => {
             const delay = (index + 3) * 0.1;
             ranksContainer.innerHTML += createRankCard(student, delay);
@@ -71,7 +71,7 @@ function displayStudents(students) {
     const restStudents = students.slice(10);
     if (restStudents.length > 0) {
         const restContainer = document.getElementById('rest');
-        restContainer.innerHTML = '<h2>باقي الطلاب</h2>';
+        restContainer.innerHTML = '<h2></h2>';
         restStudents.forEach((student, index) => {
             const delay = (index + 10) * 0.05;
             restContainer.innerHTML += createRestCard(student, delay);
@@ -164,3 +164,4 @@ function showError() {
 
 // Load students when page loads
 window.addEventListener('DOMContentLoaded', loadStudents);
+
