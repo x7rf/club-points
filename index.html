@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة المتصدرين - الطلاب</title>
+    <title>لوحة المتصدرين</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="light-mode">
+<body>
     <div class="container">
-        <!-- زر تبديل الوضع الليلي / النهاري -->
-        <div class="theme-toggle" id="theme-toggle">
-            <span class="theme-icon">🌙</span>
-        </div>
-
         <header>
-            <div class="trophy-icon">🏆</div>
-            <h1>لوحة المتصدرين</h1>
-            <p>أفضل الطلاب المتميزين</p>
+            <h1>🏆 لوحة المتصدرين 🏆</h1>
+            <p class="subtitle">أفضل الطلاب والطالبات المتميزين</p>
         </header>
 
-        <!-- هنا سيتم عرض لوحة المتصدرين -->
-        <div id="leaderboard"></div>
+        <div class="file-upload">
+            <label for="csvFile" class="upload-btn">
+                📁 اختر ملف students.csv
+            </label>
+            <input type="file" id="csvFile" accept=".csv" />
+            <span id="fileName"></span>
+        </div>
+
+        <div id="leaderboard" class="leaderboard"></div>
     </div>
 
-    <!-- مكتبة PapaParse لقراءة CSV -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
