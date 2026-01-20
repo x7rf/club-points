@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة متصدرين نادي الابتكار الرقمي</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المتصدرين - الطلاب</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <h1>🏆 لوحة النقاط - أعضاء النادي</h1>
-  </header>
+<body class="light-mode">
+    <div class="container">
+        <!-- زر تبديل الوضع الليلي / النهاري -->
+        <div class="theme-toggle" id="theme-toggle">
+            <span class="theme-icon">🌙</span>
+        </div>
 
-  <main>
-    <table id="students-table">
-      <thead>
-        <tr>
-          <th>الاسم</th>
-          <th>النقاط</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- البيانات ستملأ هنا بواسطة JS -->
-      </tbody>
-    </table>
-  </main>
+        <header>
+            <div class="trophy-icon">🏆</div>
+            <h1>لوحة المتصدرين</h1>
+            <p>أفضل الطلاب المتميزين</p>
+        </header>
 
-  <script src="app.js"></script>
+        <!-- هنا سيتم عرض لوحة المتصدرين -->
+        <div id="leaderboard"></div>
+    </div>
+
+    <!-- مكتبة PapaParse لقراءة CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
