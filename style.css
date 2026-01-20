@@ -1,60 +1,188 @@
+/* عام */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(120deg, #e0f7fa, #80deea);
-  text-align: center;
-  padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-header h1 {
-  color: #006064;
-  margin-bottom: 30px;
-  animation: fadeIn 2s ease-in-out;
+/* الوضع الليلي */
+body.dark-mode {
+    background: linear-gradient(135deg, #004972 0%, #005a8c 50%, #006ba3 100%);
 }
 
-table {
-  width: 90%;
-  margin: auto;
-  border-collapse: collapse;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: white;
+/* الوضع النهاري */
+body.light-mode {
+    background: linear-gradient(135deg, #e0f2fe 0%, #cffafe 50%, #e0f7fa 100%);
 }
 
-th, td {
-  padding: 15px;
-  font-size: 18px;
+/* الحاوية الرئيسية */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-thead {
-  background-color: #004d40;
-  color: white;
+/* زر تبديل الوضع */
+.theme-toggle {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
 }
 
-tbody tr:nth-child(even) {
-  background-color: #f0f0f0;
+.theme-toggle.light {
+    background: rgba(0,0,0,0.1);
+    border-color: rgba(0,0,0,0.2);
+}
+.theme-toggle.light:hover {
+    background: rgba(0,0,0,0.15);
 }
 
-tbody tr:hover {
-  background-color: #26a69a;
-  transform: scale(1.03);
-  transition: all 0.3s ease;
+.theme-icon {
+    font-size: 24px;
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s forwards;
+/* ترويسة الصفحة */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    transition: color 0.3s ease;
+}
+body.dark-mode header {
+    color: white;
+}
+body.light-mode header {
+    color: #1e293b;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.trophy-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+body.light-mode h1 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+header p {
+    font-size: 1.3em;
+}
+body.dark-mode header p {
+    color: #a0e7ff;
+}
+body.light-mode header p {
+    color: #475569;
+}
+
+/* لوحة المتصدرين */
+#leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.student-card {
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.rank {
+    font-size: 2em;
+    font-weight: bold;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.student-name {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.student-points {
+    text-align: left;
+}
+.points-number {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.points-label {
+    font-size: 1em;
+}
+
+/* ألوان حسب الوضع */
+body.dark-mode .student-card {
+    background: rgba(0, 149, 218, 0.15);
+    border: 2px solid rgba(96, 211, 255, 0.25);
+}
+body.light-mode .student-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+}
+body.dark-mode .student-card:hover,
+body.light-mode .student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* المراكز الثلاثة الأولى */
+body.dark-mode .student-card.top-1 { border:3px solid #60d3ff; }
+body.dark-mode .student-card.top-2 { border:3px solid #5bc0de; }
+body.dark-mode .student-card.top-3 { border:3px solid #87ceeb; }
+
+body.light-mode .student-card.top-1 { border:3px solid #3b82f6; }
+body.light-mode .student-card.top-2 { border:3px solid #0ea5e9; }
+body.light-mode .student-card.top-3 { border:3px solid #06b6d4; }
+
+/* Media Queries */
+@media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    .student-name { font-size: 1.2em; }
+    .points-number { font-size: 2em; }
+    .rank { font-size: 1.5em; width: 50px; height: 50px; }
+    .theme-toggle { top: 20px; left: 20px; width: 45px; height: 45px; }
 }
